@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Skylist-KSA": {
+    "Skylight": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:class": {
@@ -38,7 +38,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/skylist-ksa",
+            "outputPath": "dist/skylight",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -84,10 +84,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Skylist-KSA:build:production"
+              "buildTarget": "Skylight:build:production"
             },
             "development": {
-              "buildTarget": "Skylist-KSA:build:development"
+              "buildTarget": "Skylight:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,24 @@
+/* Progress Bar Styles */
+.bg-gray-700 {
+  background-color: rgba(55, 65, 81, 0.5);
+}
+
+.h-2\.5 {
+  height: 0.625rem;
+}
+
+/* Animation Smoothing */
+#glassProgress, #smartProgress, #civilProgress {
+  transition: width 0.5s ease-out;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1023px) {
+  .flex-col {
+    gap: 2rem;
+  }
+  img {
+    max-height: 400px;
+    object-position: center;
+  }
+}

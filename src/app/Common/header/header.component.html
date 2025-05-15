@@ -1,0 +1,32 @@
+<header id="mainHeader" 
+        class="fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] max-w-6xl z-50 
+               backdrop-blur-md bg-white/10 border border-white/20 shadow-lg 
+               px-4 py-3 transition-all duration-300 ease-in-out rounded-full">
+  <div class="flex justify-between items-center w-full">
+    <!-- Logo Section -->
+    <div class="text-white text-xl md:text-2xl font-bold">SKYLIGHT KSA</div>
+
+    <!-- Hamburger Icon (visible on mobile) -->
+    <button class="lg:hidden cursor-pointer flex flex-col justify-center items-center w-8 h-8" 
+            (click)="toggleMenu()"
+            aria-label="Toggle menu">
+      <div class="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300" 
+           [class]="isMenuOpen ? 'rotate-45 translate-y-2' : ''"></div>
+      <div class="w-6 h-0.5 bg-white mb-1.5 transition-all duration-300" 
+           [class]="isMenuOpen ? 'opacity-0' : ''"></div>
+      <div class="w-6 h-0.5 bg-white transition-all duration-300" 
+           [class]="isMenuOpen ? '-rotate-45 -translate-y-2' : ''"></div>
+    </button>
+
+    <!-- Navigation Section -->
+    <nav class="hidden lg:flex space-x-4 md:space-x-6 text-white font-medium text-base md:text-lg"
+         [class]="isMenuOpen ? '!flex absolute top-full left-0 right-0 flex-col bg-gray-900/95 backdrop-blur-lg mt-4 p-6 rounded-2xl space-y-4 space-x-0 border border-white/20' : ''">
+      <a routerLink="/home" class="hover:text-blue-300 transition" (click)="closeMenu()">Home</a>
+      <a routerLink="/partners" class="hover:text-blue-300 transition" (click)="closeMenu()">Partners</a>
+      <a routerLink="/services" class="hover:text-blue-300 transition" (click)="closeMenu()">Services</a>
+      <a routerLink="/career" class="hover:text-blue-300 transition" (click)="closeMenu()">Career</a>
+      <a routerLink="/contact" class="hover:text-blue-300 transition" (click)="closeMenu()">Contact Us</a>
+      <a routerLink="/about" class="hover:text-blue-300 transition" (click)="closeMenu()">About Us</a>
+    </nav>
+  </div>
+</header>
