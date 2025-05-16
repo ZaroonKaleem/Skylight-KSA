@@ -5,6 +5,8 @@ import { ClientsComponent } from '../clients/clients.component';
 import { ChooseUsComponent } from '../choose-us/choose-us.component';
 import { NumbersComponent } from '../numbers/numbers.component';
 import { ServicesSectionComponent } from '../services-section/services-section.component';
+import { ProcessComponent } from '../process/process.component';
+import { ContactSectionComponent } from '../contact-section/contact-section.component';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +17,9 @@ import { ServicesSectionComponent } from '../services-section/services-section.c
     ClientsComponent,
     ChooseUsComponent,
     NumbersComponent,
-    ServicesSectionComponent
+    ServicesSectionComponent,
+    ProcessComponent,
+    ContactSectionComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
