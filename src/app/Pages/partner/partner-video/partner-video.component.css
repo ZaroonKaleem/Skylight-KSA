@@ -1,0 +1,11 @@
+.video-container {
+  position: relative;
+}
+
+.play-overlay {
+  transition: all 0.3s ease;
+}
+
+.play-overlay:hover {
+  background-opacity: 0.4;
+}

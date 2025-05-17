@@ -4,6 +4,7 @@ import { CareerComponent } from './Pages/career/career.component';
 import { ContactComponent } from './Pages/contact/contact.component';
 import { AboutComponent } from './Pages/about/about.component';
 import { PartnerComponent } from './Pages/partner/partner.component';
+import { ServicesComponent } from './Pages/services/services.component';
 
 export const routes: Routes = [
     {
@@ -29,6 +30,11 @@ export const routes: Routes = [
     {
         path: 'partners',
         component: PartnerComponent,
-        title: 'PARTNERS - SKYLIGHTS | KSA'
+        title: 'Partners - SKYLIGHTS | KSA'
+    },
+    {
+        path: 'services',
+        component: ServicesComponent,
+        title: 'Services - SKYLIGHT | KSA'
     }
 ];
