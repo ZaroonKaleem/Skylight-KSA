@@ -1,5 +1,5 @@
 <header id="mainHeader" 
-        class="fixed top-4 left-1/2 transform -translate-x-1/2 w-[95%] max-w-6xl z-50 
+        class="fixed top-4 left-1/2 transform -translate-x-1/2 w-[75%] max-w-6xl z-50 
                backdrop-blur-md bg-white/10 border border-white/20 shadow-lg 
                px-4 py-3 transition-all duration-300 ease-in-out rounded-full">
   <div class="flex justify-between items-center w-full">
@@ -21,11 +21,11 @@
     <!-- Navigation Section -->
     <nav class="hidden lg:flex space-x-4 md:space-x-6 text-white font-medium text-base md:text-lg"
          [class]="isMenuOpen ? '!flex absolute top-full left-0 right-0 flex-col bg-gray-900/95 backdrop-blur-lg mt-4 p-6 rounded-2xl space-y-4 space-x-0 border border-white/20' : ''">
-      <a routerLink="/home" class="hover:text-blue-300 transition" (click)="closeMenu()">Home</a>
+      <a routerLink="/" class="hover:text-blue-300 transition" (click)="closeMenu()">Home</a>
       <a routerLink="/partners" class="hover:text-blue-300 transition" (click)="closeMenu()">Partners</a>
       <a routerLink="/services" class="hover:text-blue-300 transition" (click)="closeMenu()">Services</a>
       <a routerLink="/career" class="hover:text-blue-300 transition" (click)="closeMenu()">Career</a>
-      <a routerLink="/contact" class="hover:text-blue-300 transition" (click)="closeMenu()">Contact Us</a>
+      <a routerLink="/contact-us" class="hover:text-blue-300 transition" (click)="closeMenu()">Contact Us</a>
       <a routerLink="/about" class="hover:text-blue-300 transition" (click)="closeMenu()">About Us</a>
     </nav>
   </div>
