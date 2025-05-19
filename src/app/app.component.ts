@@ -5,6 +5,9 @@ import { HeaderComponent } from './Common/header/header.component';
 import { FooterComponent } from './Common/footer/footer.component';
 import { filter } from 'rxjs';
 import { HomeComponent } from './Pages/home/home.component';
+import { FacebookFloatComponent } from './Common/facebook-float/facebook-float.component';
+import { InstagramFloatComponent } from './Common/instagram-float/instagram-float.component';
+import { SnapchatFloatComponent } from './Common/snapchat-float/snapchat-float.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +15,9 @@ import { HomeComponent } from './Pages/home/home.component';
   imports: [
     RouterOutlet,
     WhatsappFloatComponent,
+    FacebookFloatComponent,
+    InstagramFloatComponent,
+    SnapchatFloatComponent,
     HeaderComponent,
     FooterComponent,
     RouterOutlet,

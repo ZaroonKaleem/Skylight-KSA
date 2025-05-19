@@ -1,31 +1,102 @@
+<!-- performance-metrics.component.html -->
 <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50 backdrop-blur-md">
   <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Completed Projects -->
-     <div class="glass-card-counter p-8 rounded-2xl text-center" id="counter1">
-        <div class="flex justify-center items-end">
-          <span class="text-5xl font-bold text-blue-300" id="projectsCount">0</span>
-          <span class="text-5xl font-bold text-blue-300">+</span>
-        </div>
-        <div class="text-xl text-white font-medium mt-2">Completed Projects</div>
+    <h2 class="text-3xl font-bold text-center text-white mb-12">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+        Annual Performance Metrics
+      </span>
+    </h2>
+    
+    <!-- Year Selector -->
+    <!-- <div class="flex justify-center mb-12 gap-4">
+      <button 
+        *ngFor="let year of [2023, 2024, 2025]"
+        (click)="changeYear(year)"
+        [class]="selectedYear === year 
+          ? 'px-6 py-2 rounded-full bg-blue-500 text-white font-medium transition-all shadow-lg shadow-blue-500/30'
+          : 'px-6 py-2 rounded-full bg-gray-700 text-gray-300 font-medium transition-all hover:bg-gray-600'">
+        {{ year }}
+      </button>
+    </div>
+    
+    <div class="glass-card p-6 rounded-2xl mb-8">
+      <h3 class="text-xl font-bold text-white mb-6 text-center">
+        {{ selectedYear }} Targets vs Achievements
+      </h3>
+      <div class="h-80">
+        <canvas id="performanceChart"></canvas>
       </div>
-
-            <!-- Years of Market -->
-      <div class="glass-card-counter p-8 rounded-2xl text-center" id="counter2">
-        <div class="flex justify-center items-end">
-          <span class="text-5xl font-bold text-cyan-300" id="yearsCount">0</span>
-          <span class="text-5xl font-bold text-cyan-300">+</span>
-        </div>
-        <div class="text-xl text-white font-medium mt-2">Years of Market</div>
+    </div>
+    
+    <div class="glass-card p-6 rounded-2xl">
+      <h3 class="text-xl font-bold text-white mb-6 text-center">
+        Yearly Performance Comparison
+      </h3>
+      <div class="h-80">
+        <canvas id="yearlyComparisonChart"></canvas>
       </div>
-
-      <!-- Happy Clients -->
-      <div class="glass-card-counter p-8 rounded-2xl text-center" id="counter3">
-        <div class="flex justify-center items-end">
-          <span class="text-5xl font-bold text-blue-300" id="clientsCount">0</span>
-          <span class="text-5xl font-bold text-blue-300">+</span>
+    </div>
+     -->
+    <!-- Metrics Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+      <!-- Glass -->
+      <div class="glass-card p-6 rounded-2xl">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-bold text-blue-300">Glass & Aluminum</h3>
+          <span class="text-sm px-3 py-1 bg-blue-900/50 rounded-full">
+            {{ getCompletionPercentage('glass') }}% Complete
+          </span>
         </div>
-        <div class="text-xl text-white font-medium mt-2">Happy Clients</div>
+        <div class="h-2 bg-gray-700 rounded-full mb-2">
+          <div 
+            class="h-2 bg-blue-400 rounded-full" 
+            [style.width.%]="getCompletionPercentage('glass')">
+          </div>
+        </div>
+        <div class="flex justify-between text-sm text-gray-300">
+          <span>Target: {{ performanceData[selectedYear].glass.target }}%</span>
+          <span>Achieved: {{ performanceData[selectedYear].glass.achieved }}%</span>
+        </div>
+      </div>
+      
+      <!-- Aluminum -->
+      <div class="glass-card p-6 rounded-2xl">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-bold text-green-300">It Work</h3>
+          <span class="text-sm px-3 py-1 bg-green-900/50 rounded-full">
+            {{ getCompletionPercentage('aluminum') }}% Complete
+          </span>
+        </div>
+        <div class="h-2 bg-gray-700 rounded-full mb-2">
+          <div 
+            class="h-2 bg-green-400 rounded-full" 
+            [style.width.%]="getCompletionPercentage('aluminum')">
+          </div>
+        </div>
+        <div class="flex justify-between text-sm text-gray-300">
+          <span>Target: {{ performanceData[selectedYear].aluminum.target }}%</span>
+          <span>Achieved: {{ performanceData[selectedYear].aluminum.achieved }}%</span>
+        </div>
+      </div>
+      
+      <!-- Civil Work -->
+      <div class="glass-card p-6 rounded-2xl">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-bold text-amber-300">Civil Work</h3>
+          <span class="text-sm px-3 py-1 bg-amber-900/50 rounded-full">
+            {{ getCompletionPercentage('civil') }}% Complete
+          </span>
+        </div>
+        <div class="h-2 bg-gray-700 rounded-full mb-2">
+          <div 
+            class="h-2 bg-amber-400 rounded-full" 
+            [style.width.%]="getCompletionPercentage('civil')">
+          </div>
+        </div>
+        <div class="flex justify-between text-sm text-gray-300">
+          <span>Target: {{ performanceData[selectedYear].civil.target }}%</span>
+          <span>Achieved: {{ performanceData[selectedYear].civil.achieved }}%</span>
+        </div>
       </div>
     </div>
   </div>

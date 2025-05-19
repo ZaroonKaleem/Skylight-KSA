@@ -1,48 +1,59 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Chart, registerables } from 'chart.js';
+
+type Year = 2023 | 2024 | 2025;
+
+interface PerformanceCategory {
+  target: number;
+  achieved: number;
+}
+
+interface YearlyPerformance {
+  glass: PerformanceCategory;
+  aluminum: PerformanceCategory;
+  civil: PerformanceCategory;
+}
+
 
 @Component({
   selector: 'app-numbers',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './numbers.component.html',
   styleUrl: './numbers.component.css'
 })
-export class NumbersComponent implements AfterViewInit {
-  ngAfterViewInit() {
-    this.setupCounterAnimation();
-  }
+export class NumbersComponent implements OnInit {
+  selectedYear: Year = 2023;
 
- setupCounterAnimation() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this.animateCounter('projectsCount', 61);
-          this.animateCounter('yearsCount', 10);
-          this.animateCounter('clientsCount', 51);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
+  performanceData: Record<Year, YearlyPerformance> = {
+    2023: {
+      glass: { target: 80, achieved: 67 },
+      aluminum: { target: 80, achieved: 64 },
+      civil: { target: 75, achieved: 58 }
+    },
+    2024: {
+      glass: { target: 80, achieved: 67 },
+      aluminum: { target: 80, achieved: 64 },
+      civil: { target: 75, achieved: 58 }
+    },
+    2025: {
+      glass: { target: 80, achieved: 67 },
+      aluminum: { target: 80, achieved: 64 },
+      civil: { target: 75, achieved: 58 }
+    }
+  };
 
-    const counterSection = document.getElementById('counter1')?.parentElement;
-    if (counterSection) {
-      observer.observe(counterSection);
+  ngOnInit(): void {}
+
+  changeYear(year: number): void {
+    if (year === 2023 || year === 2024 || year === 2025) {
+      this.selectedYear = year;
     }
   }
 
-  animateCounter(elementId: string, target: number) {
-    let current = 0;
-    const element = document.getElementById(elementId);
-    const increment = target / 30; // Adjust speed here
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-        if (element) element.textContent = Math.round(current) + '+';
-      }
-      if (element) element.textContent = Math.round(current).toString();
-    }, 25);
+  getCompletionPercentage(category: keyof YearlyPerformance): number {
+    const yearData = this.performanceData[this.selectedYear];
+    return Math.round((yearData[category].achieved / yearData[category].target) * 80);
   }
-}
+}     

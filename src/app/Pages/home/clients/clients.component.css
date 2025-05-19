@@ -1,50 +1,79 @@
-/* Marquee Styles */
-.marquee, .marquee-reverse {
-  --gap: 2rem;
-  display: flex;
-  overflow: hidden;
-  user-select: none;
-  gap: var(--gap);
-}
+ /* Marquee Container */
+  .marquee-container {
+      background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
+    --gap: 2rem;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 50px;
+    /* background-color: white; */
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
 
-.marquee-content {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: var(--gap);
-  min-width: 100%;
-  animation: scroll 30s linear infinite;
-}
-
-.marquee-reverse .marquee-content {
-  animation: scroll-reverse 30s linear infinite;
-}
-
-.marquee-item {
-  flex: 0 0 auto;
-  padding: 0 1rem;
-}
-
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
   }
-  100% {
-    transform: translateX(calc(-100% - var(--gap)));
-  }
-}
 
-@keyframes scroll-reverse {
-  0% {
-    transform: translateX(calc(-100% - var(--gap)));
+  /* Marquee Track - Contains the items */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    gap: var(--gap);
+    align-items: center;
+    will-change: transform;
+    animation: marquee 40s linear infinite;
   }
-  100% {
-    transform: translateX(0);
-  }
-}
 
-/* Pause on hover */
-.group:hover .marquee-content {
-  animation-play-state: paused;
-}
+  /* Reverse animation for bottom carousel */
+  .reverse .marquee-track {
+    animation: marquee-reverse 40s linear infinite;
+  }
+
+  /* Marquee Item */
+  .marquee-item {
+    flex: 0 0 auto;
+    padding: 0 1rem;
+    transition: transform 0.2s ease;
+  }
+
+  /* Hover effect - pause animation and slightly enlarge items */
+  .marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-container:hover .marquee-item img {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+
+  /* Keyframes for the marquee animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - var(--gap)/2));
+    }
+  }
+
+  @keyframes marquee-reverse {
+    0% {
+      transform: translateX(calc(-50% - var(--gap)/2));
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /* Optimizations for smooth animation */
+  .marquee-track {
+    backface-visibility: hidden;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+
+  .marquee-item img {
+    display: block;
+    max-width: none;
+    backface-visibility: hidden;
+  }

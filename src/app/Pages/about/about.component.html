@@ -1,12 +1,12 @@
 <!-- about.component.html -->
 <section class="bg-gray-900">
   <!-- Hero Section -->
-  <div class="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-    <div class="absolute inset-0 bg-[url('assets/about-hero-bg.jpg')] bg-cover bg-center opacity-20"></div>
+  <div class="relative pt-[9rem] pb-20 px-4 sm:px-6 lg:px-8">
+    <div class="absolute inset-0 bg-[url('/ourStory.jpg')] bg-cover bg-center opacity-20"></div>
     <div class="relative max-w-7xl mx-auto text-center">
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-6">
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500">
-          About Skylight KSA
+          About Skylight
         </span>
       </h1>
       <p class="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -23,13 +23,13 @@
           <div>
             <h2 class="text-3xl font-bold text-white mb-6">Our Story</h2>
             <div class="space-y-4 text-gray-300">
-              <p>Founded in Riyadh, Skylight KSA began as a visionary enterprise with a simple goal: to revolutionize the industry through cutting-edge solutions and customer-centric services.</p>
+              <p>Founded in Jeddah, Skylight began as a visionary enterprise with a simple goal: to revolutionize the industry through cutting-edge solutions and customer-centric services.</p>
               <p>What started as a small team of passionate professionals has grown into a market leader, serving clients across Saudi Arabia and beyond. Our journey has been marked by continuous innovation, strategic partnerships, and an unwavering commitment to excellence.</p>
               <p>Today, we stand proud as a testament to Saudi Arabia's growing business ecosystem, combining local expertise with global standards.</p>
             </div>
           </div>
           <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden">
-            <img src="assets/office-team.jpg" alt="Our team at work" class="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity">
+            <img src="/ourStory.jpg" alt="Our team at work" class="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity">
           </div>
         </div>
       </div>
@@ -41,7 +41,7 @@
     <div class="max-w-7xl mx-auto">
       <h2 class="text-3xl font-bold text-white text-center mb-16">
         <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500">
-          Why Choose Skylight KSA
+          Why Choose Skylight
         </span>
       </h2>
       
@@ -87,7 +87,7 @@
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
         <h2 class="text-3xl font-bold text-white mb-4">Meet Our Leadership</h2>
-        <p class="text-xl text-gray-300 max-w-3xl mx-auto">The visionary minds driving Skylight KSA's success story</p>
+        <p class="text-xl text-gray-300 max-w-3xl mx-auto">The visionary minds driving Skylight's success story</p>
       </div>
       
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -123,6 +123,58 @@
       </div>
     </div>
   </div>
+
+  <!-- Workers Team Section -->
+   <div class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl font-bold text-white mb-4">Our Expert Team</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">The skilled professionals who bring our projects to life</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Umer - Marketing Manager -->
+      <div class="glass-card p-6 rounded-xl border border-white/10 backdrop-blur-lg text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-blue-400/30">
+          <img src="/team/umer.jpg" alt="Marketing Manager" class="w-full h-full object-cover">
+        </div>
+        <h3 class="text-xl font-bold text-white">Umer Farooq</h3>
+        <p class="text-blue-400 mb-3">Marketing Manager</p>
+        <p class="text-gray-300 text-sm">Driving brand growth and customer engagement with innovative marketing strategies.</p>
+      </div>
+      
+      <!-- Hasnain - Architect Engineer -->
+      <div class="glass-card p-6 rounded-xl border border-white/10 backdrop-blur-lg text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-amber-400/30">
+          <img src="/team/husnain.jpg" alt="Architect Engineer" class="w-full h-full object-cover">
+        </div>
+        <h3 class="text-xl font-bold text-white">Hasnain Ali</h3>
+        <p class="text-amber-400 mb-3">Senior Architect Engineer</p>
+        <p class="text-gray-300 text-sm">Transforming visions into structural realities with precision engineering.</p>
+      </div>
+      
+      <!-- Khaleed Saad - Finance Manager -->
+      <div class="glass-card p-6 rounded-xl border border-white/10 backdrop-blur-lg text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-green-400/30">
+          <img src="/team/khaled.jpg" alt="Finance Manager" class="w-full h-full object-cover">
+        </div>
+        <h3 class="text-xl font-bold text-white">Khaleed Saad</h3>
+        <p class="text-green-400 mb-3">Finance Manager</p>
+        <p class="text-gray-300 text-sm">Ensuring financial health and strategic investments for sustainable growth.</p>
+      </div>
+      
+      <!-- Adil Javed - Civil Engineer -->
+      <div class="glass-card p-6 rounded-xl border border-white/10 backdrop-blur-lg text-center">
+        <div class="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-2 border-cyan-400/30">
+          <img src="/team/adil.jpg" alt="Civil Engineer" class="w-full h-full object-cover">
+        </div>
+        <h3 class="text-xl font-bold text-white">Adil Javed</h3>
+        <p class="text-cyan-400 mb-3">Senior Civil Engineer</p>
+        <p class="text-gray-300 text-sm">Overseeing construction excellence and infrastructure development.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Our Values Section -->
   <div class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-800 to-gray-900">
@@ -189,9 +241,9 @@
   <div class="py-16 px-4 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto glass-card p-8 md:p-12 rounded-xl border border-white/10 backdrop-blur-lg text-center">
       <h2 class="text-3xl font-bold text-white mb-6">Ready to Work With Us?</h2>
-      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Discover how Skylight KSA can transform your business with our innovative solutions.</p>
+      <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">Discover how Skylight can transform your business with our innovative solutions.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-4">
-        <a routerLink="/contact" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl">
+        <a routerLink="/contact-us" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl">
           Contact Our Team
         </a>
         <a routerLink="/services" class="px-6 py-3 border border-cyan-400 text-cyan-400 font-medium rounded-lg hover:bg-cyan-400/10 transition-all duration-300">

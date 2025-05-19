@@ -16,9 +16,9 @@ export class ChooseUsComponent implements AfterViewInit {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          this.animateProgress('glassProgress', 'glassPercent', 87);
-          this.animateProgress('smartProgress', 'smartPercent', 91);
-          this.animateProgress('civilProgress', 'civilPercent', 94);
+          this.animateProgress('glassProgress', 'glassPercent', 75);
+          this.animateProgress('smartProgress', 'smartPercent', 60);
+          this.animateProgress('civilProgress', 'civilPercent', 65);
           observer.unobserve(entry.target);
         }
       });
