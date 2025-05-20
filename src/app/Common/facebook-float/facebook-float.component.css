@@ -1,49 +1,120 @@
+html {
+  font-size: 36px;
+}
+
+body {
+  min-height: 100vh;
+  
+  background: #2b2b2b;
+  background: linear-gradient(135deg, blue, cyan);
+}
+
 * {
-    overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
-.float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 110px;
-    right: 40px;
-    background-color: #4267B2;
-    color: #FFF;
-    border-radius: 50%;
-    text-align: center;
-    padding-top: 3px;
-    font-size: 35px;
-    z-index: 100;
-    overflow: visible;
+
+menu {
+    z-index: 9999;
+  --size: 2.5rem;
+  --radius: 6rem;
+  --padding: 1rem;
+  --bg-color: rgba(255, 255, 255, 0.9);
+  --fg-color: rgba(0, 0, 0, 0.7);
+  --hi-color: blue;
+  
+  position: fixed;
+  bottom: var(--padding);
+  right: var(--padding);
+    background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
 }
 
-.float:hover {
-    background-color: white;
-    color: #4267B2;
-    transition: 0.4s ease-in-out;
-    border: 1px solid #4267B2;
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: all 0.3s ease;
 }
 
-.my-float {
-    margin-top: 9px;
-    margin-right: 3px;
+menu > * {
+  position: absolute;
+  
+  display: grid;
+  place-content: center;
+  
+  border-radius: 50%;
+  
+  background: var(--bg-color);
+  color: var(--fg-color);
+  
+  text-decoration: none;
+  
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.6);
 }
 
-.tooltip {
-    position: absolute;
-    left: calc(-100% - 10px);
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: green;
-    color: #FFF;
-    padding: 5px;
-    border-radius: 5px;
-    transition: left 0.3s ease-in-out;
-    opacity: 0;
+menu > .action {
+  --factor: 0;
+  
+  width: var(--size);
+  height: var(--size);
+  right: calc(0.35 * var(--size));
+  bottom: calc(0.35 * var(--size));
+  
+  opacity: 0;
+  
+  transform: rotate(calc(-1 * var(--angle))) translateY(calc(-1 * var(--radius) * var(--factor))) rotate(var(--angle));
+  
+  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out, box-shadow 250ms ease-in-out, color 250ms ease-in-out;
 }
 
-.float:hover .tooltip {
-    left: calc(-100% - 20px);
-    opacity: 1;
+menu > .action:hover, menu > .trigger:hover {
+  color: var(--hi-color);
+  box-shadow: 0px 0px 0px 0.35rem rgba(0, 0, 0, 0.2);
 }
+
+menu.open > .action {
+  --factor: 1;
+  
+  opacity: 1;
+}
+
+menu > .action:nth-child(1) {
+  --angle: 0deg;
+  transition-delay: 0ms;
+}
+
+menu > .action:nth-child(2) {
+  --angle: 30deg;
+  transition-delay: 50ms;
+}
+
+menu > .action:nth-child(3) {
+  --angle: 60deg;
+  transition-delay: 100ms;
+}
+
+menu > .action:nth-child(4) {
+  --angle: 90deg;
+  transition-delay: 150ms;
+}
+
+menu > .trigger {
+  width: calc(1.6 * var(--size));
+  height: calc(1.6 * var(--size));
+  bottom: 0;
+  right: 0;
+  
+  font-size: 2rem;
+  transition: box-shadow 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+menu > .trigger > i {
+  transition: transform 250ms ease-in-out;
+}
+
+menu.open > .trigger > i {
+  transform: rotate(-135deg);
+}
+

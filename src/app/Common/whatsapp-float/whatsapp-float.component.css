@@ -3,13 +3,14 @@
 }
 
 .float {
+
     position: fixed;
     width: 60px;
     height: 60px;
-    bottom: 40px;
-    right: 40px;
-    background-color: #25d366;
-    color: #FFF;
+    bottom: 20px;
+    left: 30px;
+    background-color: #ffffff;
+    color: darkblue;
     border-radius: 50%;
     text-align: center;
     padding-top: 3px;
@@ -19,14 +20,15 @@
 }
 
 .float:hover {
-    background-color: white;
-    color: #25D366;
+    background-color: darkblue;
+    color: white;
     transition: 0.4s ease-in-out;
-    border: 1px solid #25D366;
+    border: 1px solid darkslateblue;
 }
 
 .my-float {
     margin-top: 9px;
+    left: calc(-100% - 20px);
 }
 
 .tooltip {

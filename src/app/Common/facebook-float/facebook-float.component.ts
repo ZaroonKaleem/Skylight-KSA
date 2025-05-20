@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './facebook-float.component.css'
 })
 export class FacebookFloatComponent {
+ isOpen = false;
 
+  toggleMenu(event: Event) {
+  event.preventDefault();
+  this.isOpen = !this.isOpen;
+}
 }

@@ -1,4 +1,7 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<a href="https://wa.me/923010779002" class="float" target="_blank">
-    <i class="fa fa-facebook my-float vertical"></i>
-</a>
+<menu [class.open]="isOpen" class="glass-card">
+  <a href="#" class="action"><i class="fab fa-whatsapp"></i></a>
+  <a href="#" class="action"><i class="fab fa-instagram"></i></a>
+  <a href="#" class="action"><i class="fab fa-snapchat"></i></a>
+  <a href="#" class="action"><i class="fab fa-facebook-f"></i></a>
+  <a href="#" class="trigger" (click)="toggleMenu($event)"><i class="fas fa-plus"></i></a>
+</menu>
