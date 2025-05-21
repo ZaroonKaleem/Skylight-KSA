@@ -1,40 +1,30 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, CommonModule],
   templateUrl: './hero.component.html',
   styleUrl: './hero.component.css'
 })
-export class HeroComponent {
- @ViewChild('backgroundVideo', { static: false }) backgroundVideo!: ElementRef<HTMLVideoElement>;
+export class HeroComponent implements OnInit {
+  carouselImages = [
+    '/s1.jpg',
+    '/s2.jpg',
+    '/s3.jpg',
+    '/s1.jpg'
+  ];
+  currentImageIndex = 0;
 
-  ngAfterViewInit(): void {
-    this.playBackgroundVideo();
+  ngOnInit() {
+    this.startCarousel();
   }
 
-  @HostListener('window:visibilitychange')
-  handleVisibilityChange(): void {
-    if (document.visibilityState === 'visible') {
-      this.playBackgroundVideo();
-    }
+  startCarousel() {
+    setInterval(() => {
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.carouselImages.length;
+    }, 3000); // Change image every 3 seconds
   }
-
-  playBackgroundVideo(): void {
-    if (this.backgroundVideo && this.backgroundVideo.nativeElement) {
-      const videoElement = this.backgroundVideo.nativeElement;
-      videoElement.muted = true; // Ensure the video is muted
-
-      const tryPlay = () => {
-        videoElement.play().catch(error => {
-          console.error('Error attempting to play video:', error);
-          setTimeout(tryPlay, 1000); // Retry after a brief delay
-        });
-      };
-
-      tryPlay();
-    }
   }
-}
