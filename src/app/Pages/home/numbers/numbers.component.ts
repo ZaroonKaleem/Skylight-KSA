@@ -28,17 +28,17 @@ export class NumbersComponent implements OnInit {
 
   performanceData: Record<Year, YearlyPerformance> = {
     2023: {
-      glass: { target: 80, achieved: 67 },
-      aluminum: { target: 80, achieved: 64 },
-      civil: { target: 75, achieved: 58 }
+      glass: { target: 80, achieved: 91 },
+      aluminum: { target: 80, achieved: 62 },
+      civil: { target: 75, achieved: 70 }
     },
     2024: {
-      glass: { target: 80, achieved: 67 },
+      glass: { target: 80, achieved: 92 },
       aluminum: { target: 80, achieved: 64 },
       civil: { target: 75, achieved: 58 }
     },
     2025: {
-      glass: { target: 80, achieved: 67 },
+      glass: { target: 80, achieved: 98 },
       aluminum: { target: 80, achieved: 64 },
       civil: { target: 75, achieved: 58 }
     }

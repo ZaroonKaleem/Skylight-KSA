@@ -17,9 +17,9 @@ body {
 
 menu {
     z-index: 9999;
-  --size: 2.5rem;
+  --size: 2.7rem;
   --radius: 6rem;
-  --padding: 1rem;
+  --padding: 1.8rem;
   --bg-color: rgba(255, 255, 255, 0.9);
   --fg-color: rgba(0, 0, 0, 0.7);
   --hi-color: blue;
@@ -27,7 +27,7 @@ menu {
   position: fixed;
   bottom: var(--padding);
   right: var(--padding);
-    background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-5px);
   box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25);
 }
@@ -59,8 +59,8 @@ menu > .action {
   
   width: var(--size);
   height: var(--size);
-  right: calc(0.35 * var(--size));
-  bottom: calc(0.35 * var(--size));
+  right: calc(0.25 * var(--size));
+  bottom: calc(0.25 * var(--size));
   
   opacity: 0;
   
@@ -101,11 +101,11 @@ menu > .action:nth-child(4) {
 }
 
 menu > .trigger {
-  width: calc(1.6 * var(--size));
-  height: calc(1.6 * var(--size));
+  width: calc(1.5 * var(--size));
+  height: calc(1.5 * var(--size));
   bottom: 0;
   right: 0;
-  
+  background-color: white;
   font-size: 2rem;
   transition: box-shadow 250ms ease-in-out, color 250ms ease-in-out;
 }
