@@ -1,45 +1,87 @@
-<!-- hero.component.html -->
-<div class="relative h-screen w-full py-16 pb-32 overflow-hidden bg-gray-800">
-  <!-- Background overlay -->
-  <div class="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
+<!-- 
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+    </div>
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div> -->
 
-  <!-- Content container -->
-  <div class="relative z-20 flex flex-col md:flex-row items-center justify-between h-full text-white px-4 md:px-12 lg:px-24 container mx-auto">
-    <!-- Left side content -->
-    <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-      <h1 class="text-4xl mt-8 md:text-5xl sm:pt-32 lg:text-6xl font-bold mb-4">SKYLIGHT <br><span class="font-semibold">General Contracting EST.</span></h1>
-      <p class="text-xl md:text-2xl lg:text-3xl mb-8">Precision in Glass, Aluminium, Civil and IT Services.</p>
-      <button routerLink="/services" class="bg-blue-500 duration-300 cursor-pointer hover:bg-blue-700 transition px-6 py-3 rounded-full text-white font-semibold text-lg">
-        Learn More
-      </button>
+
+<section class="relative h-screen overflow-hidden">
+  <!-- Carousel Container -->
+  <div class="relative h-full w-full">
+    <!-- Slides -->
+    <div *ngFor="let slide of slides; let i = index" 
+         [class.opacity-0]="currentSlideIndex !== i"
+         [class.opacity-100]="currentSlideIndex === i"
+         class="absolute inset-0 flex items-center justify-center transition-opacity duration-1000 bg-gray-900">
+      <img [src]="slide.imageUrl" [alt]="slide.title" class="absolute inset-0 w-full h-full object-cover opacity-70">
+      <div class="relative z-10 px-6 text-center text-white max-w-4xl">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">{{slide.title}}</h1>
+        <p class="text-xl md:text-2xl mb-8 animate-fadeIn">{{slide.description}}</p>
+        <button class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-lg font-semibold transition-colors animate-fadeIn">
+          {{slide.ctaText}}
+        </button>
+      </div>
     </div>
 
-    <!-- Right side image carousel -->
-    <div class="md:w-1/2 h-64 md:h-96 relative py-16">
-      <!-- Carousel images -->
-      <img 
-        *ngFor="let image of carouselImages; let i = index"
-        [src]="image" 
-        [alt]="'Glass installation ' + (i + 1)"
-        class="absolute w-full h-full object-cover rounded-lg shadow-xl transition-opacity duration-1000"
-        [class.opacity-100]="i === currentImageIndex"
-        [class.opacity-0]="i !== currentImageIndex">
-    </div>
-  </div>
-</div>
+    <!-- Navigation Arrows -->
+    <button (click)="prevSlide()" 
+            class="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button (click)="nextSlide()" 
+            class="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-black/30 hover:bg-black/50 text-white p-3 rounded-full transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
 
-<section class="bg-gray-900 py-16 px-6 md:px-20 text-center">
-  <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl pb-2 md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500 mb-6">
-      Global Leaders in General Contracting
-    </h2>
-   <p class="text-lg text-gray-400 mb-8">
-    We specialize in multiple domains including precision-engineered glass installations, high-quality aluminium fabrication, comprehensive IT solutions, and professional civil work. Our expertise combines cutting-edge technology with exceptional craftsmanship to deliver innovative, durable, and aesthetically refined results across residential, commercial, and architectural projects. From sleek glass facades to robust aluminium structures, from smart IT infrastructure to reliable civil construction, we provide end-to-end solutions tailored to your specific needs.
-</p>
-    <a href="/assets/company-profile.pdf" download>
-      <button class="bg-blue-500 duration-300 cursor-pointer hover:bg-blue-700 transition px-6 py-3 rounded-full text-white font-semibold">
-        Download Company Profile
-      </button>
-    </a>
+    <!-- Indicators -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-2">
+      <button *ngFor="let slide of slides; let i = index" 
+              (click)="goToSlide(i)"
+              [class.bg-white]="currentSlideIndex === i"
+              [class.bg-white]="currentSlideIndex !== i"
+              class="w-3 h-3 rounded-full transition-colors"></button>
+    </div>
   </div>
 </section>

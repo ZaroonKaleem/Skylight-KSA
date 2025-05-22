@@ -7,11 +7,10 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    border-radius: 50px;
+    border-radius: 90px;
     /* background-color: white; */
     padding: 1.5rem 0;
     margin-bottom: 1rem;
-
   }
 
   /* Marquee Track - Contains the items */

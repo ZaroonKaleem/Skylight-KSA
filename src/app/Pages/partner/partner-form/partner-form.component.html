@@ -1,60 +1,118 @@
-    <div class="py-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-3xl mx-auto glass-card p-8 rounded-xl border border-white/10 backdrop-blur-lg">
-            <h2 class="text-2xl font-bold text-white mb-6">Get In Touch</h2>
+<!-- contact-form.component.html -->
+<div class="py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto glass-card p-8 rounded-xl border border-white/10 backdrop-blur-lg">
+        <h2 class="text-2xl font-bold text-white mb-6">Get In Touch</h2>
 
-            <form class="space-y-5">
-                <!-- Name Fields -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                        <label for="firstName" class="block text-sm font-medium text-gray-300 mb-1">First Name *</label>
-                        <input type="text" id="firstName" name="firstName" required
-                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition">
-                    </div>
-                    <div>
-                        <label for="lastName" class="block text-sm font-medium text-gray-300 mb-1">Last Name *</label>
-                        <input type="text" id="lastName" name="lastName" required
-                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition">
-                    </div>
-                </div>
-
-                <!-- Contact Fields -->
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-5">
+            <!-- Name Fields -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                    <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address *</label>
-                    <input type="email" id="email" name="email" required
+                    <label for="firstName" class="block text-sm font-medium text-gray-300 mb-1">First Name *</label>
+                    <input type="text" id="firstName" formControlName="firstName"
                         class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition">
+                    <div *ngIf="contactForm.get('firstName')?.touched && contactForm.get('firstName')?.errors?.['required']" 
+                         class="mt-1 text-sm text-red-400">
+                        First name is required
+                    </div>
                 </div>
+                <div>
+                    <label for="lastName" class="block text-sm font-medium text-gray-300 mb-1">Last Name *</label>
+                    <input type="text" id="lastName" formControlName="lastName"
+                        class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition">
+                    <div *ngIf="contactForm.get('lastName')?.touched && contactForm.get('lastName')?.errors?.['required']" 
+                         class="mt-1 text-sm text-red-400">
+                        Last name is required
+                    </div>
+                </div>
+            </div>
 
+            <!-- Contact Fields -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email Address *</label>
+                <input type="email" id="email" formControlName="email"
+                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition">
+                <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['required']" 
+                     class="mt-1 text-sm text-red-400">
+                    Email is required
+                </div>
+                <div *ngIf="contactForm.get('email')?.touched && contactForm.get('email')?.errors?.['email']" 
+                     class="mt-1 text-sm text-red-400">
+                    Please enter a valid email
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                     <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">Phone Number</label>
-                    <input type="tel" id="phone" name="phone"
+                    <input type="tel" id="phone" formControlName="phone"
                         class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition">
                 </div>
-
-                <!-- Subject -->
                 <div>
-                    <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject *</label>
-                    <select id="subject" name="subject" required
-                        class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition appearance-none">
-                        <option value="" disabled selected>Select a subject</option>
-                        <option value="partnership">Partnership Inquiry</option>
-                        <option value="software">Software Development</option>
-                        <option value="consultation">Consultation</option>
-                        <option value="other">Other</option>
-                    </select>
+                    <label for="whatsapp" class="block text-sm font-medium text-gray-300 mb-1">WhatsApp Number</label>
+                    <div class="relative">
+                        <input type="tel" id="whatsapp" formControlName="whatsapp"
+                            class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition pl-12">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <i class="fa fa-whatsapp"></i>
+                        </div>
+                    </div>
                 </div>
+            </div>
 
-                <!-- Message -->
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message *</label>
-                    <textarea id="message" name="message" rows="4" required
-                        class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"></textarea>
+            <!-- Subject -->
+            <div>
+                <label for="subject" class="block text-sm font-medium text-gray-300 mb-1">Subject *</label>
+                <select id="subject" formControlName="subject"
+                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition appearance-none">
+                    <option value="" disabled selected>Select a subject</option>
+                    <option value="partnership">Partnership Inquiry</option>
+                    <option value="software">Software Development</option>
+                    <option value="consultation">Consultation</option>
+                    <option value="other">Other</option>
+                </select>
+                <div *ngIf="contactForm.get('subject')?.touched && contactForm.get('subject')?.errors?.['required']" 
+                     class="mt-1 text-sm text-red-400">
+                    Subject is required
                 </div>
+            </div>
 
-                <!-- Submit Button -->
-                <button type="submit"
-                    class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl">
-                    Submit Inquiry
-                </button>
-            </form>
-        </div>
+            <!-- Message -->
+            <div>
+                <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Message *</label>
+                <textarea id="message" formControlName="message" rows="4"
+                    class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition"></textarea>
+                <div *ngIf="contactForm.get('message')?.touched && contactForm.get('message')?.errors?.['required']" 
+                     class="mt-1 text-sm text-red-400">
+                    Message is required
+                </div>
+            </div>
+
+            <!-- File Attachment -->
+            <div>
+                <label for="attachment" class="block text-sm font-medium text-gray-300 mb-1">Attachment (Optional)</label>
+                <div class="relative">
+                    <input type="file" id="attachment" (change)="onFileSelected($event)"
+                        class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition opacity-0 absolute z-20 cursor-pointer">
+                    <div class="flex items-center justify-between px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg">
+                        <span class="text-gray-400 text-sm">{{ fileName }}</span>
+                        <button type="button" class="text-sm text-cyan-400 hover:text-cyan-300 font-medium">
+                            Choose File
+                        </button>
+                    </div>
+                </div>
+                <p class="mt-1 text-xs text-gray-400">Max file size: 5MB</p>
+                <div *ngIf="contactForm.get('attachment')?.errors?.['maxSize']" 
+                     class="mt-1 text-sm text-red-400">
+                    File size exceeds 5MB limit
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit"
+                class="w-full px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+                [disabled]="contactForm.invalid">
+                Submit Inquiry
+            </button>
+        </form>
     </div>
+</div>
