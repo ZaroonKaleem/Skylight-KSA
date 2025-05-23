@@ -52,13 +52,26 @@
          [class.opacity-100]="currentSlideIndex === i"
          class="absolute inset-0 flex items-center justify-center transition-opacity duration-1000 bg-gray-900">
       <img [src]="slide.imageUrl" [alt]="slide.title" class="absolute inset-0 w-full h-full object-cover opacity-70">
-      <div class="relative z-10 px-6 text-center text-white max-w-4xl">
+      <!-- <div class="relative z-10 px-6 text-center text-white max-w-4xl">
         <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn">{{slide.title}}</h1>
         <p class="text-xl md:text-2xl mb-8 animate-fadeIn">{{slide.description}}</p>
         <button class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg text-lg font-semibold transition-colors animate-fadeIn">
           {{slide.ctaText}}
         </button>
-      </div>
+      </div> -->
+      <div class="relative z-10 px-8 py-12 text-center text-white max-w-4xl backdrop-blur-sm">
+  <div class="bg-black/70 rounded-2xl mt-8 p-8 md:p-12 border border-white/10 shadow-2xl">
+    <h1 class="text-3xl md:text-4xl font-bold mb-6 animate-fadeIn bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
+      {{slide.title}}
+    </h1>
+    <p class="text-xl md:text-2xl mb-10 animate-fadeIn text-white/90 leading-relaxed">
+      {{slide.description}}
+    </p>
+    <button class="px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 rounded-xl text-lg font-semibold transition-all duration-300 animate-fadeIn shadow-lg hover:shadow-xl hover:scale-105">
+      {{slide.ctaText}}
+    </button>
+  </div>
+</div>
     </div>
 
     <!-- Navigation Arrows -->

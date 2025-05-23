@@ -19,29 +19,29 @@ interface Slide {
 })
 
 export class HeroComponent implements OnInit {
-  slides: Slide[] = [
-    {
-      id: 1,
-      imageUrl: 'https://source.unsplash.com/random/1920x1080/?nature,1',
-      title: 'Discover Amazing Nature',
-      description: 'Explore the beauty of untouched landscapes and breathtaking views.',
-      ctaText: 'Explore Now'
-    },
-    {
-      id: 2,
-      imageUrl: 'https://source.unsplash.com/random/1920x1080/?mountain,1',
-      title: 'Mountain Adventures',
-      description: 'Conquer the highest peaks and experience the thrill of climbing.',
-      ctaText: 'Start Climbing'
-    },
-    {
-      id: 3,
-      imageUrl: 'https://source.unsplash.com/random/1920x1080/?ocean,1',
-      title: 'Ocean Wonders',
-      description: 'Dive into the deep blue and discover marine life like never before.',
-      ctaText: 'Learn More'
-    }
-  ];
+slides: Slide[] = [
+  {
+    id: 1,
+    imageUrl: '/GlassServices.jpg',
+    title: 'Glass & Aluminum Solutions',
+    description: 'Premium quality glass and aluminum installations for modern architecture and construction projects.',
+    ctaText: 'View Our Projects'
+  },
+  {
+    id: 2,
+    imageUrl: '/ItSolutions.jpg',
+    title: 'IT Solutions',
+    description: 'Comprehensive technology services to drive your business forward in the digital age.',
+    ctaText: 'Explore Services'
+  },
+  {
+    id: 3,
+    imageUrl: '/CivilWork.jpg',
+    title: 'Civil Work',
+    description: 'Expert civil engineering and construction services for infrastructure and development projects.',
+    ctaText: 'Get a Quote'
+  }
+];
 
   currentSlideIndex = 0;
   interval: any;
@@ -53,7 +53,7 @@ export class HeroComponent implements OnInit {
   startAutoPlay(): void {
     this.interval = setInterval(() => {
       this.nextSlide();
-    }, 5000);
+    }, 2000);
   }
 
   stopAutoPlay(): void {
