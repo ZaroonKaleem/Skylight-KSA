@@ -1,4 +1,4 @@
-<section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
+<!-- <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
     <div class="max-w-7xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500">
@@ -7,7 +7,7 @@
         </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Commercial Glass Card -->
+
             <div class="glass-card group">
                 <div class="h-48 overflow-hidden rounded-t-2xl">
                     <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <!-- Residential Glass Card -->
+
             <div class="glass-card group cursor-pointer">
                 <div class="h-48 overflow-hidden rounded-t-2xl">
                     <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
@@ -47,7 +47,7 @@
                 </div>
             </div>
 
-            <!-- Flat Glass and Mirrors Card -->
+
             <div class="glass-card group cursor-pointer">
                 <div class="h-48 overflow-hidden rounded-t-2xl">
                     <img src="https://images.unsplash.com/photo-1558002038-1055907df827?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
@@ -68,4 +68,93 @@
             </div>
         </div>
     </div>
+</section> -->
+
+<section class="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-900 to-gray-800">
+  <div class="max-w-7xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-white mb-12">
+      <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-500">
+        Glass Work
+      </span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Glass Cards -->
+      <div class="glass-card group" *ngFor="let category of glassCategories">
+        <div class="h-48 overflow-hidden rounded-t-2xl">
+          <img [src]="category.image" [alt]="category.title"
+               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-white mb-2">{{ category.title }}</h3>
+          <p class="text-gray-300 mb-4">{{ category.description }}</p>
+          <div class="text-center mt-4">
+            <button (click)="openGallery(category)"
+                    class="glass-button cursor-pointer px-4 py-2 rounded-lg text-sm font-medium transition-all hover:bg-white/20 inline-block">
+              View Gallery
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Modal -->
+  <div *ngIf="showGalleryModal" class="fixed inset-0 z-50 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+      <!-- Background overlay -->
+      <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+        <div class="absolute inset-0 bg-black opacity-90" (click)="closeGallery()"></div>
+      </div>
+
+      <!-- Modal content -->
+      <div class="inline-block align-bottom bg-transparent rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+        <div class="px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="text-2xl font-bold text-white">{{ selectedCategory?.title }}</h3>
+            <button (click)="closeGallery()" class="text-gray-300 hover:text-white focus:outline-none">
+              <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Main Image -->
+          <div class="relative">
+            <img [src]="selectedCategory?.gallery[currentImageIndex]" 
+                 [alt]="selectedCategory?.title + ' image ' + (currentImageIndex + 1)"
+                 class="w-full h-96 object-contain rounded-lg">
+            
+            <!-- Navigation arrows -->
+            <button (click)="prevImage()" 
+                    class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button (click)="nextImage()" 
+                    class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full">
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Thumbnail Gallery -->
+          <div class="grid grid-cols-4 gap-2 mt-4">
+            <div *ngFor="let img of selectedCategory?.gallery; let i = index" 
+                 (click)="selectImage(i)"
+                 class="cursor-pointer h-20 overflow-hidden rounded-md transition-all"
+                 [class.border-2]="currentImageIndex === i"
+                 [class.border-blue-500]="currentImageIndex === i">
+              <img [src]="img" 
+                   [alt]="'Thumbnail ' + (i + 1)"
+                   class="w-full h-full object-cover hover:opacity-80"
+                   [class.opacity-80]="currentImageIndex === i">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
