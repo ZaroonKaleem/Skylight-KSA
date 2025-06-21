@@ -1,0 +1,222 @@
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+
+  .social-btn {
+    width: 380px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    i {
+      font-size: 18px;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    &.facebook {
+      background-color: #3b5998;
+
+      &:hover {
+        background-color: #2d4373;
+      }
+    }
+
+    &.snapchat {
+      background-color: #fffc00;
+      color: #000;
+
+      &:hover {
+        background-color: #e5e300;
+      }
+    }
+
+    &.youtube {
+      background-color: #ff0000;
+
+      &:hover {
+        background-color: #cc0000;
+      }
+    }
+
+    &.instagram {
+      background: radial-gradient(
+        circle at 30% 107%,
+        #fdf497 0%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285aeb 90%
+      );
+
+      &:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+.center-content {
+  text-align: center;
+
+  .logo {
+    display: block;
+    margin: 0 auto 10px;
+    width: 120px;
+    height: auto;
+  }
+
+  .company-name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #222;
+  }
+}
+
+
+.blank-page-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f4f4f4;
+
+  .center-content {
+    text-align: center;
+
+    .logo {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .company-name {
+      font-size: 24px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column; /* Stack vertically */
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+
+      .social-btn {
+        width: 380px;
+        padding: 10px 16px;
+        border-radius: 4px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+
+        &.facebook {
+          background-color: #3b5998;
+        }
+
+        &.snapchat {
+          background-color: #fffc00;
+          color: #000;
+        }
+
+        &.youtube {
+          background-color: #ff0000;
+        }
+
+        &.instagram {
+          background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+        }
+      }
+    }
+  }
+
+  .float-icon {
+    position: absolute;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    img {
+      width: 100%;
+      height: auto;
+    }
+
+    &.left {
+      left: 20px;
+    }
+
+    &.right {
+      right: 20px;
+    }
+  }
+}
+
+
+
+* {
+    overflow: hidden;
+}
+
+.float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 3px;
+    font-size: 35px;
+    z-index: 100;
+    overflow: visible;
+}
+
+.float:hover {
+    background-color: white;
+    color: #25D366;
+    transition: 0.4s ease-in-out;
+    border: 1px solid #25D366;
+}
+
+.my-float {
+    margin-top: 9px;
+}
+
+.tooltip {
+    position: absolute;
+    left: calc(-100% - 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: green;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
+    transition: left 0.3s ease-in-out;
+    opacity: 0;
+}
+
+.float:hover .tooltip {
+    left: calc(-100% - 20px);
+    opacity: 1;
+}
