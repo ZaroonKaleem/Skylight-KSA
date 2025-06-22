@@ -1,3 +1,7 @@
+.blank-page-container {
+  background-color: #151D2A !important;
+  color: white !important;
+}
 
 .social-links {
   display: flex;
@@ -84,7 +88,7 @@
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #222;
+    color: white !important;
   }
 }
 
